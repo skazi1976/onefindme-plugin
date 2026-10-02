@@ -1,0 +1,22 @@
+{
+  "name": "onefindme",
+  "displayName": "OneFindMe",
+  "version": "1.0.0",
+  "description": "Search AliExpress in any language: describe what you need in your own words and get real listings with price, rating, orders and a link, priced for your delivery country.",
+  "author": {
+    "name": "OneFindMe",
+    "email": "hello@onefindme.com"
+  },
+  "homepage": "https://onefindme.com/mcp",
+  "repository": "https://github.com/skazi1976/onefindme-plugin",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "aliexpress",
+    "shopping",
+    "product-search",
+    "multilingual",
+    "mcp",
+    "e-commerce"
+  ]
+}
