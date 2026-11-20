@@ -25,7 +25,7 @@ Most clients accept this config:
 | Client | How |
 |---|---|
 | Claude (web / desktop) | Settings → Connectors → Add custom connector → URL `https://onefindme.com/mcp` |
-| Claude Code | `claude mcp add --transport http onefindme https://onefindme.com/mcp` |
+| Claude Code | Install the plugin (below), or `claude mcp add --transport http onefindme https://onefindme.com/mcp` |
 | Cursor | Install this plugin, or add the JSON above to `~/.cursor/mcp.json` |
 | VS Code | Command Palette → *MCP: Add Server* → HTTP → `https://onefindme.com/mcp` |
 | Cline / Kilo / Windsurf | Add a remote server with type `streamableHttp` and the URL above |
@@ -33,9 +33,19 @@ Most clients accept this config:
 
 See [llms-install.md](llms-install.md) for step-by-step instructions an AI agent can follow.
 
+## Claude Code plugin
+
+This repository is also a Claude Code plugin marketplace. The plugin adds the MCP server and a shopping skill that tells
+Claude when to search products and when to read a guide first:
+
+```
+/plugin marketplace add skazi1976/onefindme-plugin
+/plugin install onefindme@onefindme
+```
+
 ## Tools
 
-Both tools are read-only.
+All four tools are read-only.
 
 ### `search_products`
 Search AliExpress in the shopper's own words.
@@ -63,6 +73,25 @@ Turn one need ("home gym starter set", "kit to start baking bread", a gift) into
 | `priority` | string | What to favour, default quality |
 | `recipient` | string | Who it is for, if relevant |
 | `free_shipping_only` | boolean | Default `true` |
+
+### `search_guides`
+Search OneFindMe's ~1,200 buying guides and how-to pages in 21 languages (clothing and shoe sizes, customs and import tax by country, wigs and hair, home problems, gadgets, gifts, sales events).
+
+| Parameter | Type | Notes |
+|---|---|---|
+| `query` | string, **required** | Topic in any language |
+| `language` | string | ISO 639-1 language to prefer. Default: detected from the query script |
+| `max_results` | integer | 1–10, default 5 |
+
+### `get_guide`
+Return one guide as Markdown (headings, tables, FAQ, links).
+
+| Parameter | Type | Notes |
+|---|---|---|
+| `url` | string, **required** | A URL returned by `search_guides` |
+| `max_chars` | integer | 2,000–30,000, default 12,000 |
+
+The same guide search is available over HTTP as an [NLWeb](https://github.com/nlweb-ai/NLWeb) endpoint: `https://onefindme.com/ask?query=...`
 
 ## Prompts
 

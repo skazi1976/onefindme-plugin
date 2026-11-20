@@ -1,0 +1,15 @@
+{
+  "name": "onefindme",
+  "owner": {
+    "name": "OneFindMe",
+    "email": "hello@onefindme.com"
+  },
+  "description": "OneFindMe: search AliExpress in any language and read ~1,200 shopping guides in 21 languages, from Claude Code.",
+  "plugins": [
+    {
+      "name": "onefindme",
+      "source": "./",
+      "description": "Search AliExpress and eBay in the shopper's own words, build a set of products within a budget, and read OneFindMe's buying guides (sizes, import tax, buying advice) in 21 languages. Remote MCP server, no account."
+    }
+  ]
+}
